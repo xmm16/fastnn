@@ -205,25 +205,26 @@ def transformer(seq, window_size, epochs):
     test_input = torch.tensor([seq[-window_size:]], dtype=torch.float32).unsqueeze(-1) 
     pred = model(test_input).item()
     return pred
-
-try:
-    match model.lower():
-        case "mlp":
-            print(mlp(seq, int(window_size), int(epochs)))
-
-        case "lstm":
-            print(lstm(seq, int(window_size), int(epochs)))
-
-        case "cnn":
-            print(cnn(seq, int(window_size), int(epochs)))
-
-        case "transformer":
-            print(transformer(seq, int(window_size), int(epochs)))
-except Exception as e:
-    print("Error running model")
-    yn_error = input("Print error (y/N)? ")
-
-    if yn_error == "y":
-        print(e)
-
-    sys.exit()
+    
+if __name__ == "__main__:
+    try:
+        match model.lower():
+            case "mlp":
+                print(mlp(seq, int(window_size), int(epochs)))
+    
+            case "lstm":
+                print(lstm(seq, int(window_size), int(epochs)))
+    
+            case "cnn":
+                print(cnn(seq, int(window_size), int(epochs)))
+    
+            case "transformer":
+                print(transformer(seq, int(window_size), int(epochs)))
+    except Exception as e:
+        print("Error running model")
+        yn_error = input("Print error (y/N)? ")
+    
+        if yn_error == "y":
+            print(e)
+    
+        sys.exit()

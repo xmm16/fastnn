@@ -206,7 +206,7 @@ def transformer(seq, window_size, epochs):
     pred = model(test_input).item()
     return pred
     
-if __name__ == "__main__:
+if __name__ == "__main__":
     try:
         match model.lower():
             case "mlp":
